@@ -1,6 +1,6 @@
-# simple_gesture_detector
+# Simple Gesture Detector
 
-A new Flutter package project.
+Easy to use, reliable and lightweight gesture detector for Flutter apps. Exposes simple API to react to gestures.
 
 ## Getting Started
 
