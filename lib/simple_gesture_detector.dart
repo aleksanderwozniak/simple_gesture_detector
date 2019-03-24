@@ -10,7 +10,7 @@ class SimpleGestureDetector extends StatefulWidget {
   /// Widget to be augmented with Gesture detection.
   final Widget child;
 
-  /// Configuration for Swipe gesture.
+  /// Configuration for Swipe Gesture.
   final SimpleSwipeConfig swipeConfig;
 
   /// Behavior used for hit testing. Set to `HitTestBehavior.deferToChild` by default.

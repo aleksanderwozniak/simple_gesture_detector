@@ -1,14 +1,17 @@
 # Simple Gesture Detector
 
-Easy to use, reliable and lightweight gesture detector for Flutter apps. Exposes simple API to react to gestures.
+Easy to use, reliable and lightweight Gesture detector for Flutter apps. Exposes simple API to react to basic Gestures.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Dart
-[package](https://flutter.io/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+* Detect Swipe Gesture and expose simple callbacks: `onSwipeUp`, `onSwipeDown`, `onSwipeLeft`, `onSwipeRight`
+* Configure Swipe Gesture recognition (offset thresholds, moment of detection)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+Add to pubspec.yaml:
+
+```yaml
+dependencies:
+  simple_gesture_detector: ^0.1.1
+```
