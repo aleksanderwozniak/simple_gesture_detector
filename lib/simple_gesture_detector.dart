@@ -5,20 +5,34 @@ library simple_gesture_detector;
 
 import 'package:flutter/material.dart';
 
+/// Easy to use, reliable Gesture detection Widget. Exposes simple API for basic Gestures.
 class SimpleGestureDetector extends StatefulWidget {
+  /// Widget to be augmented with Gesture detection.
   final Widget child;
+
+  /// Configuration for Swipe gesture.
   final SimpleSwipeConfig swipeConfig;
+
+  /// Behavior used for hit testing. Set to `HitTestBehavior.deferToChild` by default.
   final HitTestBehavior behavior;
+
+  /// Callback to be run when Widget is Swiped up.
   final VoidCallback onSwipeUp;
+
+  /// Callback to be run when Widget is Swiped down.
   final VoidCallback onSwipeDown;
+
+  /// Callback to be run when Widget is Swiped left.
   final VoidCallback onSwipeLeft;
+
+  /// Callback to be run when Widget is Swiped right.
   final VoidCallback onSwipeRight;
 
   const SimpleGestureDetector({
     Key key,
     @required this.child,
     this.swipeConfig = const SimpleSwipeConfig(),
-    this.behavior,
+    this.behavior = HitTestBehavior.deferToChild,
     this.onSwipeUp,
     this.onSwipeDown,
     this.onSwipeLeft,
@@ -146,11 +160,22 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
   }
 }
 
+/// Moments describing when Swipe callbacks will run.
 enum SwipeDetectionMoment { onEnd, onUpdate }
 
+/// Configuration class for Swipe gesture.
 class SimpleSwipeConfig {
+  /// Amount of offset needed to overcome to detect vertical Swipe.
   final double verticalThreshold;
+
+  /// Amount of offset needed to overcome to detect horizontal Swipe.
   final double horizontalThreshold;
+
+  /// Moment when Swipe callbacks will run.
+  /// Use `SwipeDetectionMoment.onUpdate` for more reactive behavior.
+  ///
+  /// * `SwipeDetectionMoment.onEnd` - Swipe callbacks will run when Swipe gesture is fully complete.
+  /// * `SwipeDetectionMoment.onUpdate` - Swipe callbacks will run as soon as Swipe movement is above given threshold.
   final SwipeDetectionMoment swipeDetectionMoment;
 
   const SimpleSwipeConfig({
