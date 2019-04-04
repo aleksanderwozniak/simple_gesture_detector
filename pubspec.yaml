@@ -1,6 +1,6 @@
 name: simple_gesture_detector
-description: Easy to use, reliable and lightweight Gesture detector for Flutter apps. Exposes simple API to react to basic Gestures.
-version: 0.1.1
+description: Easy to use, reliable and lightweight gesture detector for Flutter apps. Exposes simple API to react to basic gestures.
+version: 0.1.2
 author: Aleksander Woźniak <aleksanderwozniak96@gmail.com>
 homepage: https://github.com/aleksanderwozniak/simple_gesture_detector
 

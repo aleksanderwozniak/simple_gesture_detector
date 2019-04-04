@@ -1,5 +1,7 @@
 # Simple Gesture Detector
 
+[![Pub Package](https://img.shields.io/pub/v/simple_gesture_detector.svg?style=flat-square)](https://pub.dartlang.org/packages/simple_gesture_detector)
+
 Easy to use, reliable and lightweight gesture detector for Flutter apps. Exposes simple API to react to basic gestures.
 
 ## Features
@@ -13,5 +15,5 @@ Add to pubspec.yaml:
 
 ```yaml
 dependencies:
-  simple_gesture_detector: ^0.1.1
+  simple_gesture_detector: ^0.1.2
 ```
