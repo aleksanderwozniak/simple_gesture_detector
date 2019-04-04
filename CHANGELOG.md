@@ -1,3 +1,9 @@
+## [0.1.3]
+
+* Added non-distinct continuous detection behavior
+* Fixed minor issue with previousDirection
+* Improved names of `SwipeDetectionBehavior` enum values
+
 ## [0.1.2]
 
 * Added continuous detection behavior
