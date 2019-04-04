@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
           swipeConfig: SimpleSwipeConfig(
             verticalThreshold: 40.0,
             horizontalThreshold: 40.0,
-            swipeDetectionBehavior: SwipeDetectionBehavior.onUpdateContinuous,
+            swipeDetectionBehavior: SwipeDetectionBehavior.continuousDistinct,
           ),
           child: _buildBox(),
         ),

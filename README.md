@@ -6,10 +6,15 @@ Easy to use, reliable and lightweight gesture detector for Flutter apps. Exposes
 
 ## Features
 
-* Detect swipe gesture and expose simple callbacks: `onHorizontalSwipe`, `onVerticalSwipe`. Both of them provide `SwipeDirection` parameter
-* Configure swipe gesture recognition (offset thresholds, detection behavior)
+* Detect swipe gesture - and expose simple callbacks
+* Configure gesture recognition
 
-## Installation
+## Usage
+
+Make sure to check out [example project](https://github.com/aleksanderwozniak/simple_gesture_detector/tree/master/example). 
+For additional info please refer to [API docs](https://pub.dartlang.org/documentation/simple_gesture_detector/latest/simple_gesture_detector/simple_gesture_detector-library.html).
+
+### Installation
 
 Add to pubspec.yaml:
 
