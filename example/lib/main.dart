@@ -35,31 +35,27 @@ class _MyHomePageState extends State<MyHomePage> {
     _text = 'Swipe me!';
   }
 
-  void _onSwipeUp() {
+  void _onVerticalSwipe(SwipeDirection direction) {
     setState(() {
-      _text = 'Swiped up!';
-      print('Swiped up!');
+      if (direction == SwipeDirection.up) {
+        _text = 'Swiped up!';
+        print('Swiped up!');
+      } else {
+        _text = 'Swiped down!';
+        print('Swiped down!');
+      }
     });
   }
 
-  void _onSwipeDown() {
+  void _onHorizontalSwipe(SwipeDirection direction) {
     setState(() {
-      _text = 'Swiped down!';
-      print('Swiped down!');
-    });
-  }
-
-  void _onSwipeLeft() {
-    setState(() {
-      _text = 'Swiped left!';
-      print('Swiped left!');
-    });
-  }
-
-  void _onSwipeRight() {
-    setState(() {
-      _text = 'Swiped right!';
-      print('Swiped right!');
+      if (direction == SwipeDirection.left) {
+        _text = 'Swiped left!';
+        print('Swiped left!');
+      } else {
+        _text = 'Swiped right!';
+        print('Swiped right!');
+      }
     });
   }
 
@@ -71,14 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: SimpleGestureDetector(
-          onSwipeUp: _onSwipeUp,
-          onSwipeDown: _onSwipeDown,
-          onSwipeLeft: _onSwipeLeft,
-          onSwipeRight: _onSwipeRight,
+          onVerticalSwipe: _onVerticalSwipe,
+          onHorizontalSwipe: _onHorizontalSwipe,
           swipeConfig: SimpleSwipeConfig(
             verticalThreshold: 40.0,
             horizontalThreshold: 40.0,
-            swipeDetectionMoment: SwipeDetectionMoment.onUpdate,
+            swipeDetectionBehavior: SwipeDetectionBehavior.onUpdateContinuous,
           ),
           child: _buildBox(),
         ),
