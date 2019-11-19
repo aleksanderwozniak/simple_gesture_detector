@@ -25,8 +25,17 @@ class SimpleGestureDetector extends StatefulWidget {
   /// Callback to be run when Widget is swiped vertically. Provides `SwipeDirection`.
   final SwipeCallback onVerticalSwipe;
 
-  /// Callback to be run when Widget is Swiped horizontally. Provides `SwipeDirection`.
+  /// Callback to be run when Widget is swiped horizontally. Provides `SwipeDirection`.
   final SwipeCallback onHorizontalSwipe;
+
+  /// Callback to be run when Widget is tapped;
+  final VoidCallback onTap;
+
+  /// Callback to be run when Widget is double-tapped;
+  final VoidCallback onDoubleTap;
+
+  /// Callback to be run when Widget is long-pressed;
+  final VoidCallback onLongPress;
 
   const SimpleGestureDetector({
     Key key,
@@ -35,6 +44,9 @@ class SimpleGestureDetector extends StatefulWidget {
     this.behavior = HitTestBehavior.deferToChild,
     this.onVerticalSwipe,
     this.onHorizontalSwipe,
+    this.onTap,
+    this.onDoubleTap,
+    this.onLongPress,
   })  : assert(child != null),
         assert(swipeConfig != null),
         super(key: key);
@@ -145,6 +157,9 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
     return GestureDetector(
       behavior: widget.behavior,
       child: widget.child,
+      onTap: widget.onTap,
+      onLongPress: widget.onLongPress,
+      onDoubleTap: widget.onDoubleTap,
       onVerticalDragStart: widget.onVerticalSwipe != null ? _onVerticalDragStart : null,
       onVerticalDragUpdate: widget.onVerticalSwipe != null ? _onVerticalDragUpdate : null,
       onVerticalDragEnd: widget.onVerticalSwipe != null ? _onVerticalDragEnd : null,

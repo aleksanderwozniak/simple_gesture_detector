@@ -59,6 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _onLongPress() {
+    setState(() {
+      _text = 'Long pressed!';
+      print('Long pressed!');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SimpleGestureDetector(
           onVerticalSwipe: _onVerticalSwipe,
           onHorizontalSwipe: _onHorizontalSwipe,
+          onLongPress: _onLongPress,
           swipeConfig: SimpleSwipeConfig(
             verticalThreshold: 40.0,
             horizontalThreshold: 40.0,
