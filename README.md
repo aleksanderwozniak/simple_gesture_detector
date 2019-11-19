@@ -7,6 +7,7 @@ Easy to use, reliable and lightweight gesture detector for Flutter apps. Exposes
 ## Features
 
 * Detect swipe gesture - and expose simple callbacks
+* Detect tap gestures (onTap, onDoubleTap, onLongPress)
 * Configure gesture recognition
 
 ## Usage
@@ -20,5 +21,5 @@ Add to pubspec.yaml:
 
 ```yaml
 dependencies:
-  simple_gesture_detector: ^0.1.3
+  simple_gesture_detector: ^0.1.4
 ```

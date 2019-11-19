@@ -1,3 +1,10 @@
+## [0.1.4]
+
+* Added onTap
+* Added onDoubleTap
+* Added onLongPress
+* Updated dependencies
+
 ## [0.1.3]
 
 * Added non-distinct continuous detection behavior
