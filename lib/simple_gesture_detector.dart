@@ -60,6 +60,10 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
   Offset _finalSwipeOffset;
   SwipeDirection _previousDirection;
 
+  bool _isSwipeValid() {
+    return _initialSwipeOffset != null && _finalSwipeOffset != null;
+  }
+
   void _onVerticalDragStart(DragStartDetails details) {
     _initialSwipeOffset = details.globalPosition;
   }
@@ -71,7 +75,7 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
       return;
     }
 
-    if (_initialSwipeOffset != null) {
+    if (_isSwipeValid()) {
       final offsetDifference = _initialSwipeOffset.dy - _finalSwipeOffset.dy;
 
       if (offsetDifference.abs() > widget.swipeConfig.verticalThreshold) {
@@ -92,7 +96,7 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
 
   void _onVerticalDragEnd(DragEndDetails details) {
     if (widget.swipeConfig.swipeDetectionBehavior == SwipeDetectionBehavior.singularOnEnd) {
-      if (_initialSwipeOffset != null) {
+      if (_isSwipeValid()) {
         final offsetDifference = _initialSwipeOffset.dy - _finalSwipeOffset.dy;
 
         if (offsetDifference.abs() > widget.swipeConfig.verticalThreshold) {
@@ -117,7 +121,7 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
       return;
     }
 
-    if (_initialSwipeOffset != null) {
+    if (_isSwipeValid()) {
       final offsetDifference = _initialSwipeOffset.dx - _finalSwipeOffset.dx;
 
       if (offsetDifference.abs() > widget.swipeConfig.horizontalThreshold) {
@@ -138,7 +142,7 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
 
   void _onHorizontalDragEnd(DragEndDetails details) {
     if (widget.swipeConfig.swipeDetectionBehavior == SwipeDetectionBehavior.singularOnEnd) {
-      if (_initialSwipeOffset != null) {
+      if (_isSwipeValid()) {
         final offsetDifference = _initialSwipeOffset.dx - _finalSwipeOffset.dx;
 
         if (offsetDifference.abs() > widget.swipeConfig.horizontalThreshold) {
