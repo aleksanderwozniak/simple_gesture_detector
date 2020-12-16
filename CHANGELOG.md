@@ -1,3 +1,7 @@
+## [0.1.5]
+
+* Fixed potential null swipeOffset issue
+
 ## [0.1.4]
 
 * Added onTap
