@@ -1,3 +1,7 @@
+## [0.1.6]
+
+* Migrate to AndroidX
+
 ## [0.1.5]
 
 * Fixed potential null swipeOffset issue
