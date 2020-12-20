@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -27,13 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _text;
-
-  @override
-  void initState() {
-    super.initState();
-    _text = 'Swipe me!';
-  }
+  String _text = 'Swipe me!';
 
   void _onVerticalSwipe(SwipeDirection direction) {
     setState(() {
