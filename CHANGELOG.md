@@ -1,6 +1,10 @@
+## [0.2.0-nullsafety.0]
+
+* Migrated to null safety
+
 ## [0.1.6]
 
-* Migrate to AndroidX
+* Migrated to AndroidX
 
 ## [0.1.5]
 
