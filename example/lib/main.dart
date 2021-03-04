@@ -1,5 +1,5 @@
-//  Copyright (c) 2019 Aleksander Woźniak
-//  Licensed under Apache License v2.0
+// Copyright 2019 Aleksander Woźniak
+// SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
@@ -60,6 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _onTap() {
+    setState(() {
+      _text = 'Tapped!';
+      print('Tapped!');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onVerticalSwipe: _onVerticalSwipe,
           onHorizontalSwipe: _onHorizontalSwipe,
           onLongPress: _onLongPress,
+          onTap: _onTap,
           swipeConfig: SimpleSwipeConfig(
             verticalThreshold: 40.0,
             horizontalThreshold: 40.0,
