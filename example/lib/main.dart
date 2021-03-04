@@ -1,5 +1,5 @@
-//  Copyright (c) 2019 Aleksander Woźniak
-//  Licensed under Apache License v2.0
+// Copyright 2019 Aleksander Woźniak
+// SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -27,13 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _text;
-
-  @override
-  void initState() {
-    super.initState();
-    _text = 'Swipe me!';
-  }
+  String _text = 'Swipe me!';
 
   void _onVerticalSwipe(SwipeDirection direction) {
     setState(() {
@@ -66,6 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _onTap() {
+    setState(() {
+      _text = 'Tapped!';
+      print('Tapped!');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onVerticalSwipe: _onVerticalSwipe,
           onHorizontalSwipe: _onHorizontalSwipe,
           onLongPress: _onLongPress,
+          onTap: _onTap,
           swipeConfig: SimpleSwipeConfig(
             verticalThreshold: 40.0,
             horizontalThreshold: 40.0,

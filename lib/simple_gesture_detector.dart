@@ -1,5 +1,5 @@
-//  Copyright (c) 2019 Aleksander Woźniak
-//  Licensed under Apache License v2.0
+// Copyright 2019 Aleksander Woźniak
+// SPDX-License-Identifier: Apache-2.0
 
 library simple_gesture_detector;
 
@@ -23,23 +23,24 @@ class SimpleGestureDetector extends StatefulWidget {
   final HitTestBehavior behavior;
 
   /// Callback to be run when Widget is swiped vertically. Provides `SwipeDirection`.
-  final SwipeCallback onVerticalSwipe;
+  final SwipeCallback? onVerticalSwipe;
 
   /// Callback to be run when Widget is swiped horizontally. Provides `SwipeDirection`.
-  final SwipeCallback onHorizontalSwipe;
+  final SwipeCallback? onHorizontalSwipe;
 
   /// Callback to be run when Widget is tapped;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   /// Callback to be run when Widget is double-tapped;
-  final VoidCallback onDoubleTap;
+  final VoidCallback? onDoubleTap;
 
   /// Callback to be run when Widget is long-pressed;
-  final VoidCallback onLongPress;
+  final VoidCallback? onLongPress;
 
+  /// Creates a [SimpleGestureDetector] widget.
   const SimpleGestureDetector({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.swipeConfig = const SimpleSwipeConfig(),
     this.behavior = HitTestBehavior.deferToChild,
     this.onVerticalSwipe,
@@ -47,22 +48,16 @@ class SimpleGestureDetector extends StatefulWidget {
     this.onTap,
     this.onDoubleTap,
     this.onLongPress,
-  })  : assert(child != null),
-        assert(swipeConfig != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _SimpleGestureDetectorState createState() => _SimpleGestureDetectorState();
 }
 
 class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
-  Offset _initialSwipeOffset;
-  Offset _finalSwipeOffset;
-  SwipeDirection _previousDirection;
-
-  bool _isSwipeValid() {
-    return _initialSwipeOffset != null && _finalSwipeOffset != null;
-  }
+  Offset? _initialSwipeOffset;
+  Offset? _finalSwipeOffset;
+  SwipeDirection? _previousDirection;
 
   void _onVerticalDragStart(DragStartDetails details) {
     _initialSwipeOffset = details.globalPosition;
@@ -76,8 +71,11 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
       return;
     }
 
-    if (_isSwipeValid()) {
-      final offsetDifference = _initialSwipeOffset.dy - _finalSwipeOffset.dy;
+    final initialOffset = _initialSwipeOffset;
+    final finalOffset = _finalSwipeOffset;
+
+    if (initialOffset != null && finalOffset != null) {
+      final offsetDifference = initialOffset.dy - finalOffset.dy;
 
       if (offsetDifference.abs() > widget.swipeConfig.verticalThreshold) {
         _initialSwipeOffset = widget.swipeConfig.swipeDetectionBehavior ==
@@ -93,7 +91,7 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
             _previousDirection == null ||
             direction != _previousDirection) {
           _previousDirection = direction;
-          widget.onVerticalSwipe(direction);
+          widget.onVerticalSwipe!(direction);
         }
       }
     }
@@ -102,13 +100,16 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
   void _onVerticalDragEnd(DragEndDetails details) {
     if (widget.swipeConfig.swipeDetectionBehavior ==
         SwipeDetectionBehavior.singularOnEnd) {
-      if (_isSwipeValid()) {
-        final offsetDifference = _initialSwipeOffset.dy - _finalSwipeOffset.dy;
+      final initialOffset = _initialSwipeOffset;
+      final finalOffset = _finalSwipeOffset;
+
+      if (initialOffset != null && finalOffset != null) {
+        final offsetDifference = initialOffset.dy - finalOffset.dy;
 
         if (offsetDifference.abs() > widget.swipeConfig.verticalThreshold) {
           final direction =
               offsetDifference > 0 ? SwipeDirection.up : SwipeDirection.down;
-          widget.onVerticalSwipe(direction);
+          widget.onVerticalSwipe!(direction);
         }
       }
     }
@@ -129,8 +130,11 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
       return;
     }
 
-    if (_isSwipeValid()) {
-      final offsetDifference = _initialSwipeOffset.dx - _finalSwipeOffset.dx;
+    final initialOffset = _initialSwipeOffset;
+    final finalOffset = _finalSwipeOffset;
+
+    if (initialOffset != null && finalOffset != null) {
+      final offsetDifference = initialOffset.dx - finalOffset.dx;
 
       if (offsetDifference.abs() > widget.swipeConfig.horizontalThreshold) {
         _initialSwipeOffset = widget.swipeConfig.swipeDetectionBehavior ==
@@ -146,7 +150,7 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
             _previousDirection == null ||
             direction != _previousDirection) {
           _previousDirection = direction;
-          widget.onHorizontalSwipe(direction);
+          widget.onHorizontalSwipe!(direction);
         }
       }
     }
@@ -155,13 +159,16 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
   void _onHorizontalDragEnd(DragEndDetails details) {
     if (widget.swipeConfig.swipeDetectionBehavior ==
         SwipeDetectionBehavior.singularOnEnd) {
-      if (_isSwipeValid()) {
-        final offsetDifference = _initialSwipeOffset.dx - _finalSwipeOffset.dx;
+      final initialOffset = _initialSwipeOffset;
+      final finalOffset = _finalSwipeOffset;
+
+      if (initialOffset != null && finalOffset != null) {
+        final offsetDifference = initialOffset.dx - finalOffset.dx;
 
         if (offsetDifference.abs() > widget.swipeConfig.horizontalThreshold) {
           final direction =
               offsetDifference > 0 ? SwipeDirection.left : SwipeDirection.right;
-          widget.onHorizontalSwipe(direction);
+          widget.onHorizontalSwipe!(direction);
         }
       }
     }
@@ -220,11 +227,10 @@ class SimpleSwipeConfig {
   /// * `SwipeDetectionBehavior.continuousDistinct` - Runs callback multiple times - whenever swipe movement is above set threshold, but only on distinct `SwipeDirection`.
   final SwipeDetectionBehavior swipeDetectionBehavior;
 
+  /// Creates a [SimpleSwipeConfig] object.
   const SimpleSwipeConfig({
     this.verticalThreshold = 50.0,
     this.horizontalThreshold = 50.0,
     this.swipeDetectionBehavior = SwipeDetectionBehavior.singularOnEnd,
-  })  : assert(verticalThreshold != null),
-        assert(horizontalThreshold != null),
-        assert(swipeDetectionBehavior != null);
+  });
 }
