@@ -21,5 +21,5 @@ Add to pubspec.yaml:
 
 ```yaml
 dependencies:
-  simple_gesture_detector: ^0.2.0-nullsafety.1
+  simple_gesture_detector: ^0.2.0
 ```
