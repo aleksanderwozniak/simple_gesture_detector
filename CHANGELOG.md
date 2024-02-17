@@ -1,3 +1,7 @@
+## [0.2.1]
+
+* Upgraded to Dart 3
+
 ## [0.2.0]
 
 * Migrated to null safety
